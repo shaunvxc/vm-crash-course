@@ -1,6 +1,6 @@
 # Machine #3
 
-**Goal**: Extend [Machine 2](https://github.com/thiago-silva/vm-crash-course/blob/master/exercises/ch1/exercise_02.md) with a primitive call instructions.
+**Goal**: Extend [Machine 2](exercise_02.md) with a primitive call instructions.
 
 ### Instruction format
 

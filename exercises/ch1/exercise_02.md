@@ -1,6 +1,6 @@
 # Machine #2
 
-**Goal**: Port [Machine #1](https://github.com/thiago-silva/vm-crash-course/blob/master/exercises/ch1/exercise_01.md) to C.
+**Goal**: Port [Machine #1](exercise_01.md) to C.
 
 #### References:
 

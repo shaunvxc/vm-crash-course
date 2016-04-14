@@ -1,6 +1,6 @@
 # Machine #4
 
-**Goal**: Extend [Machine 3](https://github.com/thiago-silva/vm-crash-course/blob/master/exercises/ch1/exercise_03.md) with user-defined subroutines.
+**Goal**: Extend [Machine 3](exercise_03.md) with user-defined subroutines.
 
 ### Instruction format
 
