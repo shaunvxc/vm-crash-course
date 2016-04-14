@@ -53,20 +53,21 @@ The activation record format should be: `[FP, ret_addr, local_data ...]`, where:
 - `ret_addr` is a pointer to the next instruction of the call site.
 - `local_data` is all local data  a subroutine pushes to operate on.
 
-For example, consider the following code containing a call to some subroutine `X` (as in `X(10, 20)`):
+For example, consider the following code containing a call to some subroutine `X` (as in `X()`):
 
 ```
 0xA: PUSH 10
 0xB: PUSH 20
-0xC: CALL X
-0xD: PUSH 40
+0xC: SUM
+0xD: CALL X
+0xE: PUSH 40
 ```
 
 Upon executing `CALL X`:
 
 - The value in `FP` should be pushed on the stack.
 - `FP` should be set to `SP` of the call site
-- the address of the next instruction (`0xD`) should be pushed on the stack.
+- the address of the next instruction (`0xE`) should be pushed on the stack.
 
 Then, the stack contents should be:
 
@@ -75,7 +76,7 @@ Then, the stack contents should be:
 0x04: 10
 0x05: 20
 0x06: <previous FP value>
-0x07: 0xD
+0x07: 0xE
 ```
 
 And the register contents should be:
@@ -89,7 +90,7 @@ In this way, `FP` always points to the previous `FP` (recursively) and `FP+1` po
 
 When `RET` is executed, `FP` should be used to:
 
-- reset  `IP` to the address of the next instruction to be executed using `FP` (ie. `0xD`)
+- reset  `IP` to the address of the next instruction to be executed using `FP` (ie. `0xE`)
 - clear the stack from local data pushed during `X` execution, reseting `SP` to it's previous value (which is `FP-1`).
 - reset the previous value of `FP`.
 
