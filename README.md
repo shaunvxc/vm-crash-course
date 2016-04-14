@@ -27,10 +27,10 @@ and lisp tradition. Expect old and modern techniques to make appearences.
 *Level: :suspect:, Time: :clock1:*
 
 - [Exercise #1: Basic python stack machine](exercises/ch1/exercise_01.md)
-- [Exercise #2: Basic C stack machine](exercises/chapter_02.md)
-- [Exercise #3: VM with primitive routines](exercises/chapter_03.md)
-- [Exercise #4: VM with user-defined routines](exercises/chapter_04.md)
-- [Exercise #5: VM with parameterized user-defined routines](exercises/chapter_05.md)
+- [Exercise #2: Basic C stack machine](exercises/ch1/exercise_02.md)
+- [Exercise #3: VM with primitive routines](exercises/ch1/exercise_03.md)
+- [Exercise #4: VM with user-defined routines](exercises/ch1/exercise_04.md)
+- [Exercise #5: VM with parameterized user-defined routines](exercises/ch1/exercise_05.md)
 
 ### Chapter 2
 *Level: :hurtrealbad:, Time: :clock2:*
