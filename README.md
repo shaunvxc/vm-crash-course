@@ -11,7 +11,7 @@ and lisp tradition. Expect old and modern techniques to make appearences.
 
 - This is a very terse course (aimed at professional programmers)
 - Each exercise was designed to be completed in `< 1 hour`.
-- The first exercises of each chapter require some infra-structures so may
+- The first exercises of each chapter may require some infra-structures so may
   take a little longer.
 - Your medium must to be a system programming language like C -- there's no
   point in trying to learn how things work under the hood if one is always
