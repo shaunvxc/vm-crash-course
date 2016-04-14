@@ -47,7 +47,7 @@ the subroutines. **Note**: Subroutines should not use the C-stack!
 
 ### Execution
 
-The activation record format should be: `[FP, ret_addr, local_data ...]`, where:
+The activation record format should be: `[... local_data, FP, ret_addr, local_data ...]`, where:
 
 - `FP` is the current value stored in `FP`
 - `ret_addr` is a pointer to the next instruction of the call site.
@@ -72,11 +72,11 @@ Upon executing `CALL X`:
 Then, the stack contents should be:
 
 ```
-0x03: ...
-0x04: 10
-0x05: 20
-0x06: <previous FP value>
-0x07: 0xE
+0x03: ...                 //local_data
+0x04: 10                  //local_data
+0x05: 20                  //local_data
+0x06: <previous FP value> //FP
+0x07: 0xE                 //ret_addr
 ```
 
 And the register contents should be:

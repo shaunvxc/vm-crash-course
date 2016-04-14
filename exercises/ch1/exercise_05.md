@@ -51,7 +51,7 @@ Same as `Machine #4`
 
 ### Execution
 
-The activation record format should be: `[args, FP, ret_addr, local_data ...]`, where:
+The activation record format should be: `[... local_data, args, FP, ret_addr, local_data ...]`, where:
 
 - `args` are the values `PUSH`ed by the call site.
 - `FP` is the current value stored in `FP`.
@@ -76,11 +76,11 @@ Upon executing `CALL X`:
 Then, the stack contents should be:
 
 ```
-0x03: ...
-0x04: 10
-0x05: 20
-0x06: <previous FP value>
-0x07: 0xD
+0x03: ...                  //local_data
+0x04: 10                   //arg#1
+0x05: 20                   //arg#2
+0x06: <previous FP value>  //FP
+0x07: 0xD                  //ret_addr
 ```
 
 And the register contents should be:
