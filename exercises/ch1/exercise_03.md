@@ -29,11 +29,23 @@ This machine introduces `PCALL` opcode
 
 ### Machine memory
 
-Same as `Machine #3`.
+
+```
+[ ........ program code ...... program stack ....] // memory
+             ^                             ^
+             IP                            SP
+```
+
+
+Same as `Machine #2`.
 
 ### Programs
 
 A program for `Machine #3` is the same as for `Machine #2`, but extended with `PCALL` instruction
+
+#### Execution
+
+Same as `Machine #2`.
 
 ### Primitive routines
 
@@ -44,7 +56,6 @@ A program for `Machine #3` is the same as for `Machine #2`, but extended with `P
 ### Example
 
 Given the stack `[3, 1]`, the operation `PCALL 255` interprets `1` to be `argc`, and the remaining `argc` (i.e. 1) value(s) on the stack -- `3` -- to be the argument to subroutine `255`. At the end, the stack should be `[0]` -- `0` being the result of the `print` operation.
-
 
 ### Usage
 

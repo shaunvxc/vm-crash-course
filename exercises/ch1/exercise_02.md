@@ -67,6 +67,13 @@ A program for `Machine #2` is a sequence of 16bit instructions stored in a file.
 
 For example, the 3-instructions program `PUSH 1, PUSH 2, SUM` is encoded as `00000001 00000001 00000001 00000010 00000011 00000000`
 
+
+#### Execution
+
+- Instructions should be fetched using `IP`
+- Whenever `IP` points to `0x0` it should exit -- this should be the last
+  value in the program code.
+
 ### Usage
 
 Basic command line usage:
