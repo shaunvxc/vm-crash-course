@@ -35,31 +35,4 @@ and lisp tradition. Expect old and modern techniques to make appearences.
 ### Chapter 2
 *Level: :hurtrealbad:, Time: :clock2:*
 
-- Exercise #4: VM with user-defined routines
-- Exercise #5: user defined routines with parameters
-- Exercise #X: lower-level-style calls
-- Exercise #X: local variables
-- Exercise #X: strings
-- Exercise #X: conditionals and loops
-- Exercise #X: first class functions / closures
-- Exercise #X: classes
-- Exercise #X: exceptions
-
-
----
-
-Other topics:
- - var args
- - modules/importing
- - bindings
- - GC'ing
- - C-stack vs. stackless
- - Higher level conditionals/loops (smalltalk style)
- - `call/cc`
- - co-routines
- - JS-style objects
- - piumarta-style objects
- - JIT compilation
- - Exposing interactive debugging facilities (bonus: reifying the stack)
- - multi-methods
- - Mixins
+WIP
