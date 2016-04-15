@@ -4,15 +4,15 @@
 
 ### Instruction format
 
-(The same as `Machine #2`)
+Let:
 
-- Word size: 16 bits.
-- operation section: 8 bits
-- operand section: 8 bits
+- Word size: `sizeof(void*)` bits
+- operation: `sizeof(void*)/2` bits
+- operand: `sizeof(void*)/2` bits
 
-`[ operation 8bits | operand 8bits ]`
+Instruction format: `[ operation | operand ]`
 
-All instructions are 16 bits long, even if the operation does not have arguments (in that case, operand section should be ignored).
+All instructions are `sizeof(void*)` bits long, even if the operation does not have arguments (in that case, operand should be ignored).
 
 #### Instruction set
 
@@ -36,8 +36,11 @@ This machine introduces `PCALL` opcode
              IP                            SP
 ```
 
+Both registers `IP` and `SP` are of type `word*`. All values operated on the
+`program stack` are of `sizeof(word)` size. (**note**: change your VM and
+assembler accordingly, if you're building from the previous exercise).
 
-Same as `Machine #2`.
+The semantics of these registers are the same as of `Machine #2`.
 
 ### Programs
 
@@ -60,4 +63,3 @@ Given the stack `[3, 1]`, the operation `PCALL 255` interprets `1` to be `argc`,
 ### Usage
 
 Same as `Machine #2`
-

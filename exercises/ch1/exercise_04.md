@@ -6,13 +6,15 @@
 
 (The same as and `Machine #3`)
 
-- Word size: 16 bits.
-- operation section: 8 bits
-- operand section: 8 bits
+Let:
 
-`[ operation 8bits | operand 8bits ]`
+- Word size: `sizeof(void*)` bits
+- operation: `sizeof(void*)/2` bits
+- operand: `sizeof(void*)/2` bits
 
-All instructions are 16 bits long, even if the operation does not have arguments (in that case, operand section should be ignored).
+Instruction format: `[ operation | operand ]`
+
+All instructions are `sizeof(void*)` bits long, even if the operation does not have arguments (in that case, operand should be ignored).
 
 #### Instruction set
 
@@ -44,6 +46,8 @@ This machine introduces `CALL` and `RET` opcodes
 This machine is allowed to have an extra *register*: `FP` (*frame
 pointer*). This register purpose is to identify the `activation records` of
 the subroutines. **Note**: Subroutines should not use the C-stack!
+
+`FP` is of type `word*`.
 
 ### Execution
 
@@ -108,17 +112,17 @@ A program for `Machine #4` has two sections: a `header`, and a `body`. The `head
 The format of the header is:
 
 ```
-[ num_entries: 16 bits]
-[ entry#1 id: 16 bits | entry#1 ptr: 16 bits]
-[ entry#2 id: 16 bits | entry#2 ptr: 16 bits]
+[ num_entries: sizeof(word) bits]
+[ entry#1 id: sizeof(word) bits  | entry#1 ptr: sizeof(word) bits ]
+[ entry#2 id: sizeof(word) bits  | entry#2 ptr: sizeof(word) bits ]
 ...
-[ entry#<N> id: 16 bits | entry#<N> ptr: 16 bits]
+[ entry#<N> id: sizeof(word) bits | entry#<N> ptr: sizeof(word) bits ]
 ```
 where `<N> == num_entries`.
 
 The `entry id` is the value that corresponds to the `id` of a user defined subroutine. The `entry ptr` is a pointer to the first instruction of that routine in the `body` section, with offset'd by `len(header)`.
 
-So, for example, if `num_entries` is 3, and considering an `entry` has length 32 (16 for `id` and 16 fo `ptr`), then the remaining header length is `3*32`, which is 96 bits.
+So, for example, if `num_entries` is 3, and supposing an `entry` has length 32 (16 for `id` and 16 fo `ptr`), then the remaining header length is `3*32`, which is 96 bits.
 
 
 

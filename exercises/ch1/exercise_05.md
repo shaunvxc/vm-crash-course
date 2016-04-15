@@ -6,13 +6,15 @@
 
 (The same as `Machine #4`)
 
-- Word size: 16 bits.
-- operation section: 8 bits
-- operand section: 8 bits
+Let:
 
-`[ operation 8bits | operand 8bits ]`
+- Word size: `sizeof(void*)` bits
+- operation: `sizeof(void*)/2` bits
+- operand: `sizeof(void*)/2` bits
 
-All instructions are 16 bits long, even if the operation does not have arguments (in that case, operand section should be ignored).
+Instruction format: `[ operation | operand ]`
+
+All instructions are `sizeof(void*)` bits long, even if the operation does not have arguments (in that case, operand should be ignored).
 
 #### Instruction set
 
@@ -96,7 +98,7 @@ next instruction of the call site.
 
 When `RET` is executed, `FP` should be used to:
 
-- reset  `IP` to the address of the next instruction to be executed using `FP` (ie. `0xD`)
+- reset `IP` to the address of the next instruction to be executed using `FP` (ie. `0xD`)
 - clear the stack from local data pushed during `X` execution, reseting `SP` to it's previous value (which is `FP-1`).
 - reset the previous value of `FP`.
 

@@ -38,7 +38,7 @@ Examples of instructions in bits:
 #### Machine memory
 
 ```
-[ ........ program code ...... program stack ....] // memory
+[ ........ program code ...... program stack ....] // RAM memory
              ^                             ^
              IP                            SP
 ```
@@ -60,6 +60,9 @@ The machine has only two registers to localize itself in the memory:
 
  This is a single variable that should point to the top of the `program stack`
  i.e. to the last value `pushed` to it.
+
+Both registers should be variables of type `word*`. All values operated on the
+`program stack` are of `sizeof(word)` size.
 
 ### Programs
 
