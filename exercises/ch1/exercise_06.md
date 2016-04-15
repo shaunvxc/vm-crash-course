@@ -1,4 +1,4 @@
-# Machine #5
+# Machine #6
 
 **Goal**: Extend [Machine 5](exercise_05.md) to perform better at calls.
 
@@ -66,10 +66,10 @@ code pointed by the header's `main_addr`.
 
 ### Bonus
 
-Create an assembler `a4`, in python, to build programs for machine `m4`. The
-assembler should be able to create binary programs given a source code. The
-source code is just a collection of subroutines whose instructions are per
-line. Example of source code:
+Create an assembler `a6`, in python, to build programs for `m6`. The assembler
+should be able to create binary programs given a source code. The source code
+is just a collection of subroutines whose instructions are per line. Example
+of source code:
 
 ```
 routine 7 { //  1+2

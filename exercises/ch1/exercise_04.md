@@ -138,7 +138,7 @@ Programs are loaded by reading the `header` and looking for the entry numbered `
 
 ### Bonus
 
-Create an assembler `a4`, in python, to build programs for machine `m4`. The assembler should be able to create binary programs given a source code. The source code is just a collection of subroutines whose instructions are per line. Example of source code:
+Create an assembler `a4`, in python, to build programs for `m4`. The assembler should be able to create binary programs given a source code. The source code is just a collection of subroutines whose instructions are per line. Example of source code:
 
 ```
 routine 7 { //  1+2

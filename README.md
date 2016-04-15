@@ -1,24 +1,41 @@
 # Thiago's VM crash course
 
 
-## Goal
+## About
 
-This course should guide lost souls into constructing a stack based virtual
-machine and all the pains that go into building one, following the smalltalk
-and lisp tradition. Expect old and modern techniques to make appearences.
+This course should help ~~lost souls~~ programmers into constructing virtual
+machines and many of the issues that goes with building one. The main goal is
+to dismistify how VMs and interpreters work while also showing the power of
+being able to create them.
+
+The main audience for this is the curious professional programmer who wonders
+about life beneath the hood of the interpreters he/she use everyday. Among
+these may be the hacker who plans to actually build his own language and
+system one day.
+
+The themes explored here are those of [single] stack based virtual
+machines. There won't be journeys to multi-stack machines nor register based
+ones. However, expect old and modern techniques to make appearences.
+
 
 ## Before start
 
-- This is a very terse course (aimed at professional programmers)
-- Each exercise was designed to be completed in `< 1 hour`.
-- The first exercises of each chapter may require some infra-structures so may
-  take a little longer.
-- Your medium must to be a system programming language like C -- there's no
-  point in trying to learn how things work under the hood if one is always
-  over the hood (the exception is the warm up exercise #1 where a highlevel
-  language is permitted to be used).
-- Compiler writing skills will make your life easier, but these texts won't
-  talk about parsing nor about code generation.
+- This is a very terse course entirely based on exercises.
+
+- Each exercise was designed to be an increment over the predecessor and they
+  should be completed in `< 1 hour`.
+
+- The first exercises of each chapter might require some infra-structures so
+  may take a little longer.
+
+- Your medium must to be a system programming language like C or anything that
+  manipulates raw memory with pointers (there's no point in trying to learn
+  how things work under the hood if one is always over the hood; the exception
+  is the warm up exercise #1 where a highlevel language is permitted to be
+  used).
+
+- Compiler writing skills might make your life easier, but these texts won't
+  discuss anything about parsing nor about code generation.
 
 
 ## Table of Contents
