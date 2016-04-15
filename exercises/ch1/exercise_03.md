@@ -37,8 +37,9 @@ This machine introduces `PCALL` opcode
 ```
 
 Both registers `IP` and `SP` are of type `word*`. All values operated on the
-`program stack` are of `sizeof(word)` size. (**note**: change your VM and
-assembler accordingly, if you're building from the previous exercise).
+`program stack` are of `sizeof(word)` size. (**note**: change these sizes in
+your VM and assembler accordingly, if you're building from the previous
+exercise as they might be different).
 
 The semantics of these registers are the same as of `Machine #2`.
 
