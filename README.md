@@ -58,7 +58,7 @@ If you want to get comments on your solutions, do the following:
 - [Exercise #3: VM with primitive routines](exercises/ch1/exercise_03.md)
 - [Exercise #4: VM with user-defined routines](exercises/ch1/exercise_04.md)
 - [Exercise #5: VM with parameterized user-defined routines](exercises/ch1/exercise_05.md)
-- [Exercise #6: VM with static calls](exercises/ch1/exercise_06.md)
+
 
 ### Chapter 2
 *Level: :hurtrealbad:, Time: :clock1:*
