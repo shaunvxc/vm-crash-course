@@ -95,7 +95,7 @@ Assembled, the source code above should generate the following object file:
 
 ```
 //header
-0x0: 0x20  //main_addr
+0x0: 0x9  //main_addr
 //body
 0x1:  1 1    //push 1  -- begin subroutine 7
 0x3:  1 2    //push 2
