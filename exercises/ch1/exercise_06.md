@@ -4,7 +4,7 @@
 
 ### Instruction format
 
-This machine introduces changes the semantics of `CALL`:
+This machine introduces changes to the semantics of `CALL`:
 
 
 - `PUSH <ARG>`: 0x1
@@ -12,7 +12,7 @@ This machine introduces changes the semantics of `CALL`:
 - `SUM`:  0x3
 - `SUMX`: 0x4
 - `PCALL <ID>`: 0x5
-- `CALL <ID>`: 0x6
+- `CALL <addr>`: 0x6
 
   `CALL <addr>` transfers the execution to the user-defined subroutine in address `addr`. When the subroutine finishes execution, it's resulting value should be at the top of the stack.
 
@@ -42,7 +42,7 @@ with two slight differences in the `header` and `body`.
 The format of the header is:
 
 ```
-[ main_addr: 16 bits]
+[ main_addr: word-size bits]
 ```
 
 The `main_addr` is the offset in the program where the main procedure starts -- the position of the first `main` instruction.
