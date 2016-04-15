@@ -43,8 +43,8 @@ ones. However, expect old and modern techniques to make appearences.
 ### Chapter 1
 *Level: :suspect:, Time: :clock1:*
 
-- [Exercise #1: Basic python stack machine](exercises/ch1/exercise_01.md)
-- [Exercise #2: Basic C stack machine](exercises/ch1/exercise_02.md)
+- [Exercise #1: Basic stack machine in python](exercises/ch1/exercise_01.md)
+- [Exercise #2: Basic stack machine in C](exercises/ch1/exercise_02.md)
 - [Exercise #3: VM with primitive routines](exercises/ch1/exercise_03.md)
 - [Exercise #4: VM with user-defined routines](exercises/ch1/exercise_04.md)
 - [Exercise #5: VM with parameterized user-defined routines](exercises/ch1/exercise_05.md)
