@@ -42,7 +42,7 @@ with two slight differences in the `header` and `body`.
 The format of the header is:
 
 ```
-[ main_addr: 32 bits]
+[ main_addr: 16 bits]
 ```
 
 The `main_addr` is the offset in the program where the main procedure starts -- the position of the first `main` instruction.
