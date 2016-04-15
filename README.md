@@ -41,7 +41,7 @@ ones. However, expect old and modern techniques to make appearences.
 ## Table of Contents
 
 ### Chapter 1
-*Level: :suspect:, Time: :clock1:*
+*Level: :suspect:, Time: :clock6:*
 
 - [Exercise #1: Basic stack machine in python](exercises/ch1/exercise_01.md)
 - [Exercise #2: Basic stack machine in C](exercises/ch1/exercise_02.md)
@@ -51,6 +51,21 @@ ones. However, expect old and modern techniques to make appearences.
 - [Exercise #6: VM with static calls](exercises/ch1/exercise_06.md)
 
 ### Chapter 2
-*Level: :hurtrealbad:, Time: :clock2:*
+*Level: :hurtrealbad:, Time: :clock1:*
+
+WIP
+
+### Chapter 3
+*Level: :rage2:, Time: :clock1:*
+
+WIP
+
+### Chapter 4
+*Level: :goberserk:, Time: :clock1:*
+
+WIP
+
+### Chapter 5
+*Level: :finnadie:, Time: :clock1:*
 
 WIP
