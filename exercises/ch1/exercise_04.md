@@ -108,17 +108,17 @@ A program for `Machine #4` has two sections: a `header`, and a `body`. The `head
 The format of the header is:
 
 ```
-[ num_entries: 32 bits]
-[ entry#1 id: 32 bits | entry#1 ptr: 32 bits]
-[ entry#2 id: 32 bits | entry#2 ptr: 32 bits]
+[ num_entries: 16 bits]
+[ entry#1 id: 16 bits | entry#1 ptr: 16 bits]
+[ entry#2 id: 16 bits | entry#2 ptr: 16 bits]
 ...
-[ entry#<N> id: 32 bits | entry#<N> ptr: 32 bits]
+[ entry#<N> id: 16 bits | entry#<N> ptr: 16 bits]
 ```
 where `<N> == num_entries`.
 
 The `entry id` is the value that corresponds to the `id` of a user defined subroutine. The `entry ptr` is a pointer to the first instruction of that routine in the `body` section, with offset'd by `len(header)`.
 
-So, for example, if `num_entries` is 3, and considering an `entry` has length 64 (32 for `id` and 32 fo `ptr`), then the remaining header length is `3*64`, which is 192 bits.
+So, for example, if `num_entries` is 3, and considering an `entry` has length 32 (16 for `id` and 16 fo `ptr`), then the remaining header length is `3*32`, which is 96 bits.
 
 
 
