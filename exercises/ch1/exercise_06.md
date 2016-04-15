@@ -1,8 +1,22 @@
 # Machine #6
 
-**Goal**: Extend [Machine 5](exercise_05.md) to perform better at calls.
+**Goal**: Extend [Machine 5](exercise_05.md) with "static calls" and a linking phase.
 
 ### Instruction format
+
+For this machine, our `operation` size will be smaller to make room for `operand`s of bigger size.
+
+Let:
+
+- Word size: `sizeof(void*)` bits
+- operation: `8` bits
+- operand: `sizeof(void*)-8` bits
+
+Instruction format: `[ operation | operand ]`
+
+All instructions are `sizeof(void*)` bits long, even if the operation does not have arguments (in that case, operand should be ignored).
+
+### Instruction set
 
 This machine introduces changes to the semantics of `CALL`:
 
@@ -14,7 +28,9 @@ This machine introduces changes to the semantics of `CALL`:
 - `PCALL <ID>`: 0x5
 - `CALL <addr>`: 0x6
 
-  `CALL <addr>` transfers the execution to the user-defined subroutine in address `addr`. When the subroutine finishes execution, it's resulting value should be at the top of the stack.
+  `CALL <addr>` transfers the execution to the user-defined subroutine in
+  memory address `addr`. When the subroutine finishes execution, it's
+  resulting value should be at the top of the stack.
 
 - `RET`: 0x7
 - `PUSH_ARG <ARG>`: 0x8
@@ -34,18 +50,55 @@ The same as `Machine #5`
 ### Programs
 
 
-A program for `Machine #6` has similar format of programs for `Machine #4`
-with two slight differences in the `header` and `body`.
+A program for `Machine #6` has similar format of programs for `Machine #5`
+with two slight differences in the `header`.
 
 #### header
 
-The format of the header is:
+A header is divided in:
 
 ```
-[ main_addr: word-size bits]
+[ main_addr                : word-size bits]
+[ reloc_table_size         : word-size bits]
+[ reloc_addr#1             : word-size bits]
+[ reloc_addr#2             : word-size bits]
+[ ...                                      ]
+[ reloc_addr#3             : word-size bits]
 ```
 
-The `main_addr` is the offset in the program where the main procedure starts -- the position of the first `main` instruction.
+The `main_addr` is the offset in the program where the main procedure starts -- the position of the first `main` instruction in the object file.
+
+The `reloc_table_size` indicates the number of entries in the
+relocation table. That table follows that entry, with a number of addresses
+(`base`d on the object file) that should be recalculated.
+
+Each `addr` from `CALL` instructions in the `body` should be pointed by a
+`reloc_addr`.
+
+For example, if the `body` of the program contains two `CALL` instructions:
+
+```
+0xCC: CALL 0x30
+...
+0xFB: CALL 0xC2
+...
+```
+
+Then, the header should contain two `reloc_addr` entries, one with the value
+`0xCC` and another with `0xFB`:
+
+```
+0x0: 0xABC      //main_addr
+0x1: 2          //reloc_table_size
+0x2: 0xCC       //reloc_addr#1
+0x3: 0xFB       //reloc_addr#2
+....            //begin body...
+0xCC: CALL 0x30
+...
+0xFB: CALL 0xC2
+...
+```
+
 
 #### body
 
@@ -54,59 +107,60 @@ bodies -- a subroutine body is just a string of instructions.
 
 All subroutine bodies should end with `RET <VAL>` instruction.
 
+
+### Loading and linking programs
+
+Upon loading the program in memory, the VM should update all `CALL` operands
+(`addr`) to valid memory pointers.
+
+For example, consider the following program object loaded in memory:
+
+```
+0xDE3: 0xABC      //main_addr
+0xDE4: 2          //reloc_table_size
+0xDE5: 0xCC       //reloc_addr#1
+0xDE6: 0xFB       //reloc_addr#2
+....              //begin body...
+0xEAF: CALL 0x30
+...
+0xEBE: CALL 0xC2
+...
+```
+
+
+For each `reloc_addr#N` in the relocation table, the VM should:
+
+- obtain the address `ADDR` of the entry `reloc_addr#N` (e.g. `0xCC`)
+
+- deference `*ADDR+base`, where base is the beginning of the program in memory
+ (e.g. `0xCC+0xDE3`, which is `0xEAF`) to reach the `CALL` instruction.
+
+- Rewrite the call operand with its value + `base` (e.g. `0x30+0xDE3` is
+  `0xE13`, thus, `CALL 0x30` becomes `CALL 0xE13`) -- if the resulting value
+  exceeds the `operand` size, the VM should exit with an error.
+
+
+Upon processing the relocation table, the resulting code should be:
+
+```
+0xDE3: 0xABC      //main_addr
+0xDE4: 2          //reloc_table_size
+0xDE5: 0xFA       //reloc_addr#1
+0xDE6: 0x2B       //reloc_addr#2
+....              //begin body...
+0xEDD: CALL 0xE13
+...
+0xE0E: CALL 0xEA5
+...
+```
+
+
 ### Usage
 
 Same as `Machine #5`.
 
-### Loading programs
+### Starting programs
 
-Programs are loaded by reading the `header` and looking for the `main` entry
-in the object file. Upon finding such entry, the VM should start executing the
-code pointed by the header's `main_addr`.
-
-### Bonus
-
-Create an assembler `a6`, in python, to build programs for `m6`. The assembler
-should be able to create binary programs given a source code. The source code
-is just a collection of subroutines whose instructions are per line. Example
-of source code:
-
-```
-routine 7 { //  1+2
-   push 1
-   push 2
-   sum
-   ret
-}
-
-routine 0 { // print(7()+10)
-  push 10
-  call 7
-  sum
-  push 1
-  pcall 255
-  ret
-}
-```
-
-Alternate syntax are welcome, if they could make parsing easier (these are not exercises on compilation :).
-
-Assembled, the source code above should generate the following object file:
-
-```
-//header
-0x0: 0x9  //main_addr
-//body
-0x1:  1 1    //push 1  -- begin subroutine 7
-0x3:  1 2    //push 2
-0x5:  3 0    //sum
-0x7:  7 0    //ret
-0x9:  1 10   //push 10 -- begin subroutine 0
-0xB:  6 0x1  //call 0x1 -- calls subroutine 7
-0xD:  3 0    //sum
-0xF:  1 1    //push 1
-0x11: 5 255  //pcall 255
-0x13: 7 0    //ret
-```
-
-This program should print `13` and exit.
+After loading & linking a program, the VM should lookup the `main` entry in
+the object file by following the `header`'s `main_addr`. Upon finding such
+entry, the VM should start executing the code pointed by it.
