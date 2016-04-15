@@ -38,6 +38,16 @@ ones. However, expect old and modern techniques to make appearences.
   discuss anything about parsing nor about code generation.
 
 
+## Requesting comments on solutions
+
+If you want to get comments on your solutions, do the following:
+
+1. Fork this repository
+2. Create a branch following the pattern chX/YY (e.g., ch1/01, ch1/02)
+3. Push to that branch
+4. Create a pull request to this repository with the title "chX/YY by username" (e.g., ch1/01 by hltbra)
+
+
 ## Table of Contents
 
 ### Chapter 1
