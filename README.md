@@ -4,7 +4,7 @@
 ## About
 
 This course should help ~~lost souls~~ programmers into constructing virtual
-machines and many of the issues that goes with building one. The main goal is
+machines and many of the issues that go with building one. The main goal is
 to dismistify how VMs and interpreters work while also showing the power of
 being able to create them.
 
@@ -28,7 +28,7 @@ ones. However, expect old and modern techniques to make appearences.
 - The first exercises of each chapter might require some infra-structures so
   may take a little longer.
 
-- Your medium must to be a system programming language like C or anything that
+- Your medium must be a system programming language like C or anything that
   manipulates raw memory with pointers (there's no point in trying to learn
   how things work under the hood if one is always over the hood; the exception
   is the warm up exercise #1 where a highlevel language is permitted to be
