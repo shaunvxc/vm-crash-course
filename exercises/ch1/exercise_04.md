@@ -98,6 +98,11 @@ When `RET` is executed, `FP` should be used to:
 - clear the stack from local data pushed during `X` execution, reseting `SP` to it's previous value (which is `FP-1`).
 - reset the previous value of `FP`.
 
+Note: it's easier to deal with a stack whose values are of constant size (at
+least `operand` size). So, be aware of mixing values of different sizes
+(e.g. memory pointers of different size than `operand`) in the stack and how
+this affects operations over it.
+
 ### Programs
 
 A program for `Machine #4` has two sections: a `header`, and a `body`. The `header` is a table of routines, and the `body`  contains all code of all subroutines defined:
