@@ -103,6 +103,8 @@ least `operand` size). So, be aware of mixing values of different sizes
 (e.g. memory pointers of different size than `operand`) in the stack and how
 this affects operations over it.
 
+The VM terminates execution when the main routine exits with `RET`.
+
 ### Programs
 
 A program for `Machine #4` has two sections: a `header`, and a `body`. The `header` is a table of routines, and the `body`  contains all code of all subroutines defined:
@@ -136,6 +138,7 @@ So, for example, if `num_entries` is 3, and supposing an `entry` has length 32 (
 The `body` of a program is just a concatenation of user-defined subroutine bodies -- a subroutine body is just a string of instructions. The `header` should contain pointers to the beginning of each routine in this section.
 
 All subroutine bodies should end with `RET <VAL>` instruction.
+
 
 ### Usage
 

@@ -2,7 +2,7 @@
 
 **Goal**: Port [Machine #1](exercise_01.md) to C.
 
-#### References:
+References:
 
 - Quick
   - [Wikipedia's stack verbete](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)#Basic_architecture_of_a_stack)
@@ -71,7 +71,7 @@ A program for `Machine #2` is a sequence of 16bit instructions stored in a file.
 For example, the 3-instructions program `PUSH 1, PUSH 2, SUM` is encoded as `00000001 00000001 00000001 00000010 00000011 00000000`
 
 
-#### Execution
+### Execution
 
 - Instructions should be fetched using `IP`
 - Whenever `IP` points to `0x0` it should exit -- this should be the last

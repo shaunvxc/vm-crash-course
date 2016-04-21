@@ -35,15 +35,7 @@ This machine introduces changes to the semantics of `CALL`:
 - `RET`: 0x7
 - `PUSH_ARG <ARG>`: 0x8
 
-#### Instruction set
-
-The same as `Machine #5`
-
 ### Machine memory
-
-The same as `Machine #5`
-
-### Execution
 
 The same as `Machine #5`
 
@@ -63,17 +55,17 @@ A header is divided in:
 [ reloc_addr#1             : word-size bits]
 [ reloc_addr#2             : word-size bits]
 [ ...                                      ]
-[ reloc_addr#3             : word-size bits]
+[ reloc_addr#N             : word-size bits]
 ```
 
 The `main_addr` is the offset in the program where the main procedure starts -- the position of the first `main` instruction in the object file.
 
-The `reloc_table_size` indicates the number of entries in the
-relocation table. That table follows that entry, with a number of addresses
-(`base`d on the object file) that should be recalculated.
+The `reloc_table_size` indicates the number of entries `N` in the relocation
+table. Each entry following this number is an addresses (`base`d on the object
+file) inside the `body` section that should be recalculated.
 
-Each `addr` from `CALL` instructions in the `body` should be pointed by a
-`reloc_addr`.
+Specifically, each `addr` from `CALL` instructions in the `body` should be
+pointed by a `reloc_addr`.
 
 For example, if the `body` of the program contains two `CALL` instructions:
 
@@ -88,6 +80,7 @@ Then, the header should contain two `reloc_addr` entries, one with the value
 `0xCC` and another with `0xFB`:
 
 ```
+                //header
 0x0: 0xABC      //main_addr
 0x1: 2          //reloc_table_size
 0x2: 0xCC       //reloc_addr#1
@@ -139,7 +132,6 @@ For each `reloc_addr#N` in the relocation table, the VM should:
   `0xE13`, thus, `CALL 0x30` becomes `CALL 0xE13`) -- if the resulting value
   exceeds the `operand` size, the VM should exit with an error.
 
-
 Upon processing the relocation table, the resulting code should be:
 
 ```
@@ -154,13 +146,13 @@ Upon processing the relocation table, the resulting code should be:
 ...
 ```
 
+### Execution
+
+The same as `Machine #5`. After loading & linking a program, the
+VM should lookup the `main` entry in the object file by following the
+`header`'s `main_addr`. Upon finding such entry, the VM should start executing
+the code pointed by it.
 
 ### Usage
 
 Same as `Machine #5`.
-
-### Starting programs
-
-After loading & linking a program, the VM should lookup the `main` entry in
-the object file by following the `header`'s `main_addr`. Upon finding such
-entry, the VM should start executing the code pointed by it.

@@ -44,7 +44,7 @@ The semantics of these registers are the same as of `Machine #2`.
 
 A program for `Machine #3` is the same as for `Machine #2`, but extended with `PCALL` instruction
 
-#### Execution
+### Execution
 
 Same as `Machine #2`.
 
