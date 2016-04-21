@@ -25,8 +25,8 @@ ones. However, expect old and modern techniques to make appearences.
 - Each exercise was designed to be an increment over the predecessor and they
   should be completed in `< 1 hour`.
 
-- The first exercises of each chapter might require some infra-structures so
-  may take a little longer.
+- The exercises in itallics require more effort to build a foundation, so may
+  take a little longer.
 
 - Your medium must be a system programming language like C or anything that
   manipulates raw memory with pointers (there's no point in trying to learn
@@ -56,7 +56,7 @@ If you want to get comments on your solutions, do the following:
 - [Exercise #1: Basic stack machine in python](exercises/ch1/exercise_01.md)
 - [Exercise #2: Basic stack machine in C](exercises/ch1/exercise_02.md)
 - [Exercise #3: VM with primitive routines](exercises/ch1/exercise_03.md)
-- [Exercise #4: VM with user-defined routines](exercises/ch1/exercise_04.md)
+- *[Exercise #4: VM with user-defined routines](exercises/ch1/exercise_04.md)*
 - [Exercise #5: VM with parameterized user-defined routines](exercises/ch1/exercise_05.md)
 
 
