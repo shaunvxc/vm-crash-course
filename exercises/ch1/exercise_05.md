@@ -53,12 +53,12 @@ Same as `Machine #4`
 
 ### Execution
 
-The activation record format should be: `[... local_data, args, FP, ret_addr, local_data ...]`, where:
+The activation record format should be: `[... prog_data, args, FP, ret_addr, prog_data ...]`, where:
 
 - `args` are the values `PUSH`ed by the call site.
 - `FP` is the current value stored in `FP`.
 - `ret_addr` is a pointer to the next instruction of the call site.
-- `local_data` is all local data  a subroutine pushes to operate on.
+- `prog_data` is all data a subroutine pushes to operate on.
 
 For example, consider the following code containing a call to some subroutine `X` (as in `X(10, 20)`):
 
@@ -78,7 +78,7 @@ Upon executing `CALL X`:
 Then, the stack contents should be:
 
 ```
-0x03: ...                  //local_data
+0x03: ...                  //prog_data
 0x04: 10                   //arg#1
 0x05: 20                   //arg#2
 0x06: <previous FP value>  //FP
