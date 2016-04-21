@@ -173,20 +173,20 @@ Assembled, the source code above should generate the following object file:
 
 ```
 //header
-2     //num_entries
-7 0   //entry id: 7, entry ptr: 0
-0 8   //entry_id: 0, entry ptr: 8
+0x0:  2     //num_entries
+0x1:  7 0   //entry id: 7, entry ptr: 0 -- len(header)+0 = 5 + 0 = 0x5
+0x3:  0 8   //entry_id: 0, entry ptr: 8 -- len(header)+8 = 5 + 8 = 0xD
 //body
-1 1   //push 1  -- begin subroutine 7
-1 2   //push 2
-3 0   //sum
-7 0   //ret
-1 10  //push 10 -- begin subroutine 0
-6 7   //call 7
-3 0   //sum
-1 1   //push 1
-5 255 //pcall 255
-7 0   //ret
+0x5:  1 1   //push 1  -- begin subroutine 7
+0x7:  1 2   //push 2
+0x9:  3 0   //sum
+0xB:  7 0   //ret
+0xD:  1 10  //push 10 -- begin subroutine 0
+0xF:  6 7   //call 7
+0x11: 3 0   //sum
+0x13: 1 1   //push 1
+0x15: 5 255 //pcall 255
+0x17: 7 0   //ret
 ```
 
 This program should print `13` and exit.
