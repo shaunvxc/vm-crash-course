@@ -10,7 +10,7 @@ the power of being able to create them.
 
 The target audience for this material are the curious programmers who wonder
 about what lies beneath the hood of the interpreters they use
-everyday. Moreover, mong these there might be a hacker who plans to actually
+everyday. Moreover, among these there might be a hacker who plans to actually
 build his own language and system one day.
 
 The themes explored here are those of [single] stack based virtual
@@ -59,6 +59,7 @@ so other people can learn too.
 - [Exercise #3: VM with primitive routines](exercises/ch1/exercise_03.md)
 - *[Exercise #4: VM with user-defined routines](exercises/ch1/exercise_04.md)*
 - [Exercise #5: VM with parameterized user-defined routines](exercises/ch1/exercise_05.md)
+- [Exercise #6: VM with routines and local variables](exercises/ch1/exercise_06.md)
 
 
 ### Chapter 2
