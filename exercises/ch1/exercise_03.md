@@ -52,7 +52,8 @@ Same as `Machine #2`.
 
 - `print(x)`: 255
 
-  `print` receives one parameter from the stack and prints it on stdout. It returns `0`.
+  `print` receives one parameter from the stack and prints it on stdout. It
+  should treat `x` as an unsigned integer. `print` returns `0`.
 
 ### Example
 
