@@ -1,7 +1,6 @@
 class Machine1(object):
     def __init__(self):
         self.stack = []
-        # self.stack = SimpleStack()
         self.op_table = {
             'PUSH': lambda cmds  : self.push(cmds.next()),
             'POP':  lambda cmds  : self.pop(),
@@ -42,8 +41,3 @@ if __name__ == '__main__':
     m1 = Machine1()
     m1.evaluate(['PUSH', 4, 'PUSH', 5, 'PUSH', 6, 'PUSH', 3, 'SUMX'])
     m1.dump_stack()
-
-
-
-
-
