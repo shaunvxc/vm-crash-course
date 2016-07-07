@@ -1,37 +1,29 @@
-class SimpleStack(object):
-
+class Machine1(object):
     def __init__(self):
         self.stack = []
+        # self.stack = SimpleStack()
+        self.op_table = {
+            'PUSH': lambda cmds  : self.push(cmds.next()),
+            'POP':  lambda cmds  : self.pop(),
+            'SUM':  lambda cmds  : self.sum_nums(),
+            'SUMX': lambda cmds  : self.sumx(),
+        }
 
-    def dump_stack(self):
-        print self.stack
-
-    def push(self, arg):
-        self.stack.append(arg)
+    def push(self, value):
+        self.stack.append(value)
 
     def pop(self):
         return self.stack.pop()
 
     def sum_nums(self):
-        self.stack.append(self.stack.pop() + self.stack.pop())
+        self.push(self.pop() + self.pop())
 
     def sumx(self):
         res = 0
         for x in range(0, self.pop()):
-           res += self.pop()
+            res += self.pop()
 
         self.push(res)
-
-
-class Machine1(object):
-    def __init__(self):
-        self.stack = SimpleStack()
-        self.op_table = {
-            'PUSH': lambda cmds  : self.stack.push(cmds.next()),
-            'POP':  lambda cmds  : self.stack.pop(),
-            'SUM':  lambda cmds  : self.stack.sum_nums(),
-            'SUMX': lambda cmds  : self.stack.sumx(),
-        }
 
     def evaluate(self, sequence):
         sequence = iter(sequence)
@@ -43,10 +35,15 @@ class Machine1(object):
                 break
 
     def dump_stack(self):
-        self.stack.dump_stack()
+        print self.stack #self.stack.dump_stack()
 
 
 if __name__ == '__main__':
     m1 = Machine1()
-    m1.evaluate(['PUSH', 4, 'PUSH', 5, 'PUSH', 6, 'PUSH', 2, 'SUMX'])
+    m1.evaluate(['PUSH', 4, 'PUSH', 5, 'PUSH', 6, 'PUSH', 3, 'SUMX'])
     m1.dump_stack()
+
+
+
+
+
