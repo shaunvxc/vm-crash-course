@@ -2,27 +2,27 @@ class Machine1(object):
     def __init__(self):
         self.stack = []
         self.op_table = {
-            'PUSH': lambda cmds  : self.push(cmds.next()),
-            'POP':  lambda cmds  : self.pop(),
-            'SUM':  lambda cmds  : self.sum_nums(),
-            'SUMX': lambda cmds  : self.sumx(),
+            'PUSH': lambda cmds  : self._push(cmds.next()),
+            'POP':  lambda cmds  : self._pop(),
+            'SUM':  lambda cmds  : self._sum_nums(),
+            'SUMX': lambda cmds  : self._sumx(),
         }
 
-    def push(self, value):
+    def _push(self, value):
         self.stack.append(value)
 
-    def pop(self):
+    def _pop(self):
         return self.stack.pop()
 
-    def sum_nums(self):
-        self.push(self.pop() + self.pop())
+    def _sum_nums(self):
+        self._push(self._pop() + self._pop())
 
-    def sumx(self):
+    def _sumx(self):
         res = 0
-        for x in range(0, self.pop()):
-            res += self.pop()
+        for x in range(0, self._pop()):
+            res += self._pop()
 
-        self.push(res)
+        self._push(res)
 
     def evaluate(self, sequence):
         sequence = iter(sequence)
@@ -34,7 +34,7 @@ class Machine1(object):
                 break
 
     def dump_stack(self):
-        print self.stack #self.stack.dump_stack()
+        print self.stack
 
 
 if __name__ == '__main__':
